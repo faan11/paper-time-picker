@@ -261,7 +261,8 @@ If you include this element as part of `paper-dialog`, use the class
           hour12: {
             type: Number,
             notify: true,
-            observer: '_hour12Changed'
+            computed:"_getHour12(hour)"/*,
+            observer: '_hour12Changed'*/
           },
           /**
            * The current minute (0-59)
@@ -351,6 +352,9 @@ If you include this element as part of `paper-dialog`, use the class
           'iron-resize': '_resizeHandler',
           'paper-clock-selected': '_onClockSelected'
         },
+        _getHour12:function(hour){
+          return this._twelveHour(hour);
+        },
         ready: function() {
           this.isTouch = 'ontouchstart' in window;
           this.view = 'hours';
@@ -433,10 +437,10 @@ If you include this element as part of `paper-dialog`, use the class
           }
           this.time = this.formatTime(this.hour, this.minute, this.second);*/
         },
-        _hour12Changed: function(hour12) {
+        /*_hour12Changed: function(hour12) {
           var add = (this.period === 'PM' ? 12 : 0);
           this.hour = ((hour12 % 12) + add) % 24;
-        },
+        },*/
         _hourChanged: function(hour, oldValue) {
           hour = parseInt(hour);
           if (isNaN(hour) && !hour) {
@@ -449,7 +453,7 @@ If you include this element as part of `paper-dialog`, use the class
           }
           hour = parseFloat(hour) % 24;
           this.hour = hour;
-          this.hour12 = this._twelveHour(hour);
+          /*this.hour12 = this._twelveHour(hour);*/
           this.period = ['PM', 'AM'][+(hour < 12)];
         },
         _minuteChanged: function(minute) {
@@ -534,7 +538,7 @@ If you include this element as part of `paper-dialog`, use the class
             }
 
             if (this.hour12 !== event.detail.value) {
-              this.hour12 = event.detail.value;
+              this.hour = event.detail.value+ (period.localeCompare("PM")==0)?12:0;
             } else {
               // show minutes if same hour is selected
               showMinutes();
