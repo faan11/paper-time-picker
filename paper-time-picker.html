@@ -417,10 +417,11 @@ If you include this element as part of `paper-dialog`, use the class
           this.period = (this.period === 'AM') ? 'PM' : 'AM';
         },
         _rawValueChanged: function(value, oldValue) {
-          if (isNaN(parseInt(value))) {
+         if (isNaN(parseInt(value))) {
             this.rawValue = oldValue;
             return;
           }
+          /*
           if (this.enableSeconds) {
             this.hour = Math.floor(value / 3600);
             this.minute = Math.floor(value / 60) % 60;
@@ -430,7 +431,7 @@ If you include this element as part of `paper-dialog`, use the class
             this.minute = value % 60;
             this.second = 0;
           }
-          this.time = this.formatTime(this.hour, this.minute, this.second);
+          this.time = this.formatTime(this.hour, this.minute, this.second);*/
         },
         _hour12Changed: function(hour12) {
           var add = (this.period === 'PM' ? 12 : 0);
