@@ -356,8 +356,8 @@ If you include this element as part of `paper-dialog`, use the class
           this.view = 'hours';
         },
         _getTime:function(hour,minute){
-          var fhour = ""+ (hour / 10)+""+(hour % 10);
-          var fminute = ""+ (minute / 10)+""+(minute % 10);
+          var fhour = ""+ Math.floor(hour / 10)+""+(hour % 10);
+          var fminute = ""+ Math.floor(minute / 10)+""+(minute % 10);
           return fhour+":"+fminute;
         },
         _timeChanged: function(time) {
