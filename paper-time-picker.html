@@ -538,7 +538,7 @@ If you include this element as part of `paper-dialog`, use the class
             }
 
             if (this.hour12 !== event.detail.value) {
-              this.hour = event.detail.value+ (this.period.localeCompare("PM")==0)?12:0;
+              this.hour = event.detail.value+ ((this.period.localeCompare("PM")==0)?12:0);
             } else {
               // show minutes if same hour is selected
               showMinutes();
