@@ -468,11 +468,11 @@ If you include this element as part of `paper-dialog`, use the class
           if (isNaN(parseInt(this.hour)) || isNaN(parseInt(this.minute))) {
             return;
           }
-          if (period === 'AM' &&  this.hour >= 12) {
+          /*if (period === 'AM' &&  this.hour >= 12) {
             this.hour -= 12;
           } else if (period === 'PM' && this.hour < 12) {
             this.hour += 12;
-          }
+          }*/
         },
         _zeroPad: function(value, length) {
           if (value === undefined || isNaN(value) || isNaN(length)) {
