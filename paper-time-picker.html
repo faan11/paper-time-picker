@@ -233,9 +233,10 @@ If you include this element as part of `paper-dialog`, use the class
            */
           time: {
             type: String,
-            value: '00:00',
+            /*value: '00:00',*/
             notify: true,
-            observer: '_timeChanged'
+            observer: '_timeChanged',
+            computed:"_getTime(hour,minute)"
           },
           /**
            * The time value as the number of minutes(if enableSeconds then number of seconds) from midnight
@@ -353,6 +354,9 @@ If you include this element as part of `paper-dialog`, use the class
         ready: function() {
           this.isTouch = 'ontouchstart' in window;
           this.view = 'hours';
+        },
+        _getTime:function(hour,minute){
+          return hour+":"+minute;
         },
         _timeChanged: function(time) {
           if (!time) {
